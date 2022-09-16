@@ -17,7 +17,7 @@ Plug 'wuwe1/ghsurf.vim'
 Command
 -------
 
-```vim
-" edit file hosted on github
+```bash
+# edit file hosted on github
 :GHE https://github.com/wuwe1/gh.vim/README.md
 ```
