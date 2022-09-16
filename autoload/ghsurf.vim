@@ -16,7 +16,7 @@ function! s:gh_url_to_rawcontent_url(url)
     let l:url = ''
     echoerr 'Not a valid url: '.a:url
   endif
-  let l:url = substitute(l:url, '\vblob\/([0-9a-fA-F]{40})', '\=submatch(1)', '')
+  let l:url = substitute(l:url, '\vblob\/', '', '')
   return [l:url, l:fragment]
 endfunction
 
@@ -28,6 +28,7 @@ endfunction
 
 function! ghsurf#edit(mods, url)
   let [l:url, l:fragment] = s:gh_url_to_rawcontent_url(a:url)
+  echom l:url
   exe 'edit '. l:url
   if !empty(l:fragment) && l:fragment =~? '#L\d\+'
     exe substitute(l:fragment, '\v#L(\d+)', '\=submatch(1)', '')
